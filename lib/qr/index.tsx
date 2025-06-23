@@ -342,19 +342,21 @@ export async function getQRAsCanvas(
 export function getQRData({
   url,
   fgColor,
+  bgColor,
   hideLogo,
   logo,
   margin,
 }: {
   url: string;
   fgColor?: string;
+  bgColor?: string;
   hideLogo?: boolean;
   logo?: string;
   margin?: number;
 }) {
   return {
     value: `${url}?qr=1`,
-    bgColor: "#ffffff",
+    bgColor: bgColor || "#ffffff",
     fgColor,
     size: 1024,
     level: "Q", // QR Code error correction level: https://blog.qrstuff.com/general/qr-code-error-correction

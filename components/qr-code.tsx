@@ -6,6 +6,7 @@ export const QRCode = memo(
   ({
     url,
     fgColor,
+    bgColor,
     hideLogo,
     logo,
     scale = 1,
@@ -13,14 +14,15 @@ export const QRCode = memo(
   }: {
     url: string;
     fgColor?: string;
+    bgColor?: string;
     hideLogo?: boolean;
     logo?: string;
     scale?: number;
     margin?: number;
   }) => {
     const qrData = useMemo(
-      () => getQRData({ url, fgColor, hideLogo, logo, margin }),
-      [url, fgColor, hideLogo, logo, margin]
+      () => getQRData({ url, fgColor, bgColor, hideLogo, logo, margin }),
+      [url, fgColor, bgColor, hideLogo, logo, margin]
     );
     return (
       <QRCodeSVG
