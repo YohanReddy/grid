@@ -117,9 +117,6 @@ export function QRGenerator() {
     <>
       <Card className="w-full max-w-2xl mx-auto shadow-lg">
         <CardHeader className="text-center pb-6">
-          <CardTitle className="text-2xl font-bold">
-            QR Code Generator
-          </CardTitle>
           <CardDescription className="text-base">
             Enter text or URL to generate a customizable QR code
             <br />
