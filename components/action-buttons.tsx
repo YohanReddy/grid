@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { FileText } from "lucide-react";
+import { FileText, ScanLine } from "lucide-react";
 import { memo } from "react";
 
 interface ActionButtonsProps {
@@ -9,6 +9,7 @@ interface ActionButtonsProps {
   onDownload: () => void;
   onClear: () => void;
   onToggleTemplates: () => void;
+  onToggleScanner: () => void;
 }
 
 export const ActionButtons = memo(function ActionButtons({
@@ -18,6 +19,7 @@ export const ActionButtons = memo(function ActionButtons({
   onDownload,
   onClear,
   onToggleTemplates,
+  onToggleScanner,
 }: ActionButtonsProps) {
   return (
     <div className="space-y-3">
@@ -31,6 +33,20 @@ export const ActionButtons = memo(function ActionButtons({
           <FileText className="h-4 w-4 mr-2" />
           Templates
         </Button>
+        <Button
+          onClick={onToggleScanner}
+          variant="outline"
+          className="flex-1"
+          title="Scan QR Code (Ctrl+S)"
+        >
+          <ScanLine className="h-4 w-4 mr-2" />
+          Scan
+          <span className="hidden sm:inline text-xs text-muted-foreground ml-2">
+            ⌘S
+          </span>
+        </Button>
+      </div>
+      <div className="flex gap-3">
         <Button
           onClick={onToggleAdvanced}
           variant="outline"

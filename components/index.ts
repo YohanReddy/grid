@@ -8,6 +8,7 @@ export { AdvancedOptions } from "./advanced-options";
 export { ActionButtons } from "./action-buttons";
 export { TextInput } from "./text-input";
 export { QRTemplates } from "./qr-templates";
+export { QRScanner } from "./qr-scanner";
 
 // Main Components
 export { QRCode } from "./qr-code";

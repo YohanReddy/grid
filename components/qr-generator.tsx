@@ -15,8 +15,10 @@ import { ActionButtons } from "@/components/action-buttons";
 import { TextInput } from "@/components/text-input";
 import { KeyboardShortcutsModal } from "@/components/ui/keyboard-shortcuts-modal";
 import { QRTemplates } from "@/components/qr-templates";
+import { QRScanner } from "@/components/qr-scanner";
 import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
 import { useDownloadQRCode } from "@/hooks/use-download-qr-code";
+import type { QRScanResult } from "@/hooks/use-qr-scanner";
 import { COLOR_PRESETS, DEFAULT_QR_SETTINGS } from "@/constants/qr-settings";
 
 export function QRGenerator() {
@@ -34,6 +36,7 @@ export function QRGenerator() {
   const [hideLogo, setHideLogo] = useState<boolean>(true);
   const [showShortcuts, setShowShortcuts] = useState<boolean>(false);
   const [showTemplates, setShowTemplates] = useState<boolean>(false);
+  const [showScanner, setShowScanner] = useState<boolean>(false);
 
   const { setTheme, theme } = useTheme();
   const { downloadQRCode } = useDownloadQRCode();
@@ -65,6 +68,27 @@ export function QRGenerator() {
     setShowTemplates(false);
   }, []);
 
+  const handleToggleScanner = useCallback(() => {
+    setShowScanner((prev) => !prev);
+  }, []);
+  const handleCloseScanner = useCallback(() => {
+    setShowScanner(false);
+  }, []);
+
+  const handleScanResult = useCallback((result: QRScanResult) => {
+    // Set the scanned content as text
+    setText(result.data);
+
+    // If it's a recognized format with parsed data, we could potentially
+    // auto-fill templates in the future
+    if (result.parsed) {
+      // For now, just use the raw data
+      // Future enhancement: auto-open appropriate template with parsed data
+    }
+
+    setShowScanner(false);
+  }, []);
+
   const handleTemplateGenerate = useCallback((content: string) => {
     setText(content);
   }, []);
@@ -87,6 +111,7 @@ export function QRGenerator() {
     onToggleShortcuts: handleToggleShortcuts,
     onCloseShortcuts: handleCloseShortcuts,
     onToggleTheme: handleToggleTheme,
+    onToggleScanner: handleToggleScanner,
   });
   return (
     <>
@@ -133,6 +158,7 @@ export function QRGenerator() {
             onDownload={handleDownload}
             onClear={handleClear}
             onToggleTemplates={handleToggleTemplates}
+            onToggleScanner={handleToggleScanner}
           />
 
           {showAdvanced && (
@@ -162,6 +188,12 @@ export function QRGenerator() {
         isOpen={showTemplates}
         onClose={handleCloseTemplates}
         onTemplateGenerate={handleTemplateGenerate}
+      />
+
+      <QRScanner
+        isOpen={showScanner}
+        onClose={handleCloseScanner}
+        onScanResult={handleScanResult}
       />
     </>
   );

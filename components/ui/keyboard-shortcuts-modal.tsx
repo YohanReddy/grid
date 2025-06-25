@@ -10,6 +10,7 @@ const shortcuts = [
   { action: "Download QR code", key: "⌘ ↵" },
   { action: "Toggle advanced options", key: "⌘ ⇧ A" },
   { action: "Toggle theme", key: "⌘ T" },
+  { action: "Scan QR code", key: "⌘ S" },
   { action: "Clear QR code", key: "⌘ K" },
   { action: "Focus input / Clear if focused", key: "Esc" },
   { action: "Show shortcuts", key: "⌘ /" },

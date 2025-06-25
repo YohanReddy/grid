@@ -10,6 +10,7 @@ interface UseKeyboardShortcutsProps {
   onToggleShortcuts: () => void;
   onCloseShortcuts: () => void;
   onToggleTheme: () => void;
+  onToggleScanner?: () => void;
 }
 
 export function useKeyboardShortcuts({
@@ -22,6 +23,7 @@ export function useKeyboardShortcuts({
   onToggleShortcuts,
   onCloseShortcuts,
   onToggleTheme,
+  onToggleScanner,
 }: UseKeyboardShortcutsProps) {
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
@@ -56,6 +58,18 @@ export function useKeyboardShortcuts({
       ) {
         event.preventDefault();
         onToggleTheme();
+        return;
+      }
+
+      // Ctrl/Cmd + S: Toggle scanner
+      if (
+        (event.ctrlKey || event.metaKey) &&
+        event.key === "s" &&
+        !isTyping &&
+        onToggleScanner
+      ) {
+        event.preventDefault();
+        onToggleScanner();
         return;
       }
 
