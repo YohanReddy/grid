@@ -14,6 +14,7 @@ import { AdvancedOptions } from "@/components/advanced-options";
 import { ActionButtons } from "@/components/action-buttons";
 import { TextInput } from "@/components/text-input";
 import { KeyboardShortcutsModal } from "@/components/ui/keyboard-shortcuts-modal";
+import { QRTemplates } from "@/components/qr-templates";
 import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
 import { useDownloadQRCode } from "@/hooks/use-download-qr-code";
 import { COLOR_PRESETS, DEFAULT_QR_SETTINGS } from "@/constants/qr-settings";
@@ -32,6 +33,7 @@ export function QRGenerator() {
   const [logoUrl, setLogoUrl] = useState<string>("");
   const [hideLogo, setHideLogo] = useState<boolean>(true);
   const [showShortcuts, setShowShortcuts] = useState<boolean>(false);
+  const [showTemplates, setShowTemplates] = useState<boolean>(false);
 
   const { setTheme, theme } = useTheme();
   const { downloadQRCode } = useDownloadQRCode();
@@ -54,6 +56,17 @@ export function QRGenerator() {
   }, []);
   const handleCloseShortcuts = useCallback(() => {
     setShowShortcuts(false);
+  }, []);
+
+  const handleToggleTemplates = useCallback(() => {
+    setShowTemplates((prev) => !prev);
+  }, []);
+  const handleCloseTemplates = useCallback(() => {
+    setShowTemplates(false);
+  }, []);
+
+  const handleTemplateGenerate = useCallback((content: string) => {
+    setText(content);
   }, []);
 
   const handleToggleTheme = useCallback(() => {
@@ -119,6 +132,7 @@ export function QRGenerator() {
             onToggleAdvanced={handleToggleAdvanced}
             onDownload={handleDownload}
             onClear={handleClear}
+            onToggleTemplates={handleToggleTemplates}
           />
 
           {showAdvanced && (
@@ -142,6 +156,12 @@ export function QRGenerator() {
       <KeyboardShortcutsModal
         isOpen={showShortcuts}
         onClose={handleCloseShortcuts}
+      />
+
+      <QRTemplates
+        isOpen={showTemplates}
+        onClose={handleCloseTemplates}
+        onTemplateGenerate={handleTemplateGenerate}
       />
     </>
   );
