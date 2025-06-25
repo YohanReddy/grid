@@ -16,7 +16,7 @@ export const AboutModal = memo(function AboutModal({
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-background rounded-lg p-6 max-w-lg w-full mx-4 shadow-2xl border">
         <div className="flex justify-between items-center mb-6">
-          <h3 className="text-lg font-medium">About QRaft</h3>
+          <h3 className="text-lg font-medium">About GRID</h3>
           <Button
             variant="outline"
             size="sm"
@@ -29,9 +29,9 @@ export const AboutModal = memo(function AboutModal({
 
         <div className="space-y-4 text-sm">
           <div>
-            <h4 className="font-medium mb-2">What is QRaft?</h4>
+            <h4 className="font-medium mb-2">What is GRID?</h4>
             <p className="text-muted-foreground">
-              QRaft is a powerful and user-friendly QR code generator that lets
+              GRID is a powerful and user-friendly QR code generator that lets
               you create customizable QR codes for any text, URL, or data you
               need to share.
             </p>
