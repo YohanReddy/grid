@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title:
-    "GRID - Free QR Code Generator | Custom QR Codes with Logo & Advanced Styling",
+    "GRID - OSS QR Code Generator | Custom QR Codes with Logo & Advanced Styling",
   description:
     "Create stunning QR codes instantly with GRID - the most advanced free QR code generator. Customize colors, add logos, scan QR codes, and generate WiFi, vCard, SMS, and URL QR codes. No signup required!",
   keywords: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "GRID QR Code Generator",
     images: [
       {
-        url: "/og-image.png",
+        url: "/api/og",
         width: 1200,
         height: 630,
         alt: "GRID QR Code Generator - Create Custom QR Codes",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     title: "GRID - Free QR Code Generator with Advanced Customization",
     description:
       "Create stunning QR codes with logos, custom colors, and templates. Generate WiFi, vCard, SMS QR codes and more. Try GRID's free QR generator now!",
-    images: ["/twitter-image.png"],
+    images: ["/api/og"],
     creator: "@gridqr",
     site: "@gridqr",
   },
